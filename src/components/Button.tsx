@@ -1,8 +1,11 @@
-type ButtonProps = {
-  text?: string | number | Array<string>;
-  children?: string;
-};
+import { useState } from "react";
 
-export function Button({ text, children }: ButtonProps) {
-  return <button>{text || "Clique aqui!" || children}</button>;
+export function Button() {
+  const [counter, setCounter] = useState(0);
+
+  function handleIncrement() {
+    setCounter(counter + 1);
+  }
+
+  return <button onClick={handleIncrement}>{counter}</button>;
 }
