@@ -5,8 +5,12 @@
 }
 
 :root {
-  --background: #f8f8f8;
-  --text-color: #29292e;
+  --white-300: #f8f8f8;
+  --white-500: #fff;
+  --gray-500: #a8a8b3;
+  --gray-800: #29292e;
+  --purple-500: #835afd;
+  --red-700: #ea4335;
 }
 
 @media (max-width: 1080px) {
@@ -22,8 +26,8 @@
 }
 
 body {
-  background-color: var(--background);
-  color: var(--text-color);
+  background-color: var(--white-300);
+  color: var(--gray-800);
 }
 
 body,
