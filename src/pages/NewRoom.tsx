@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
+
 import { AsideIllustration } from "../components/AsideIllustration";
 import { Button } from "../components/inputs/Button";
 import { TextInput } from "../components/inputs/TextInput";
 import { Logo } from "../components/Logo";
 import { MainContainer } from "../components/MainContainer";
 import { MainContent } from "../components/MainContent";
-import { Separator } from "../components/Separator";
 
 import "../styles/pages/auth.scss";
 import "../styles/components/new-room.scss";
@@ -27,7 +28,8 @@ export function NewRoom() {
           </form>
 
           <p>
-            Quer entrar em uma sala já existente? <a href="/">Clique aqui</a>
+            Quer entrar em uma sala já existente?{" "}
+            <Link to="/">Clique aqui</Link>
           </p>
         </MainContent>
       </MainContainer>

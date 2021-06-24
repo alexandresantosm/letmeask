@@ -1,3 +1,5 @@
+import { useHistory } from "react-router-dom";
+
 import { Button } from "../components/inputs/Button";
 import { TextInput } from "../components/inputs/TextInput";
 import { AsideIllustration } from "../components/AsideIllustration";
@@ -10,6 +12,12 @@ import { CreateRoomButton } from "../components/CreateRoomButton";
 import "../styles/pages/auth.scss";
 
 export function Home() {
+  const history = useHistory();
+
+  function navigateToNewRoom() {
+    history.push("/rooms/new");
+  }
+
   return (
     <div id="page-auth">
       <AsideIllustration />
@@ -18,7 +26,7 @@ export function Home() {
         <MainContent>
           <Logo />
 
-          <CreateRoomButton />
+          <CreateRoomButton onClick={navigateToNewRoom} />
 
           <Separator />
 

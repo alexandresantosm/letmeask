@@ -1,11 +1,9 @@
-//import { Home } from "./pages/Home";
-
-import { NewRoom } from "./pages/NewRoom";
+import { Routes } from "./routers/Routes";
 
 function App() {
   return (
     <div>
-      <NewRoom />
+      <Routes />
     </div>
   );
 }
