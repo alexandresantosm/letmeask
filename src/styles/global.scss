@@ -8,7 +8,9 @@
   --white-300: #f8f8f8;
   --white-500: #fff;
   --gray-500: #a8a8b3;
+  --gray-600: #737380;
   --gray-800: #29292e;
+  --pink-500: #e559f9;
   --purple-500: #835afd;
   --red-700: #ea4335;
 }
@@ -39,9 +41,4 @@ textarea {
 
 button {
   cursor: pointer;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
 }
