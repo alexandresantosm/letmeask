@@ -1,43 +1,34 @@
-import illustrationImg from "../assets/images/illustration.svg";
-import logoImg from "../assets/images/logo.svg";
-import googleIconImg from "../assets/images/google-icon.svg";
-
-import { Button } from "../components/Button";
+import { Button } from "../components/inputs/Button";
+import { TextInput } from "../components/inputs/TextInput";
+import { AsideIllustration } from "../components/AsideIllustration";
+import { Logo } from "../components/Logo";
+import { Separator } from "../components/Separator";
+import { MainContainer } from "../components/MainContainer";
+import { MainContent } from "../components/MainContent";
+import { CreateRoomButton } from "../components/CreateRoomButton";
 
 import "../styles/pages/auth.scss";
 
 export function Home() {
   return (
     <div id="page-auth">
-      <aside>
-        <img
-          src={illustrationImg}
-          alt="Ilustração simbolizando perguntas e respostas"
-        />
+      <AsideIllustration />
 
-        <strong>Toda pergunta tem uma resposta</strong>
+      <MainContainer>
+        <MainContent>
+          <Logo />
 
-        <p>Aprenda e compartilhe conhecimento com outras pessoas</p>
-      </aside>
+          <CreateRoomButton />
 
-      <main>
-        <div className="main-content">
-          <img src={logoImg} alt="Letmeask" />
-
-          <button className="create-room">
-            <img src={googleIconImg} alt="Logo da Google" />
-            Crie sua sala com o Google
-          </button>
-
-          <div className="separator">ou entre em uma sala</div>
+          <Separator />
 
           <form>
-            <input type="text" placeholder="Digite o código da sala" />
+            <TextInput type="text" placeholder="Digite o código da sala" />
 
             <Button type="submit">Entrar na sala</Button>
           </form>
-        </div>
-      </main>
+        </MainContent>
+      </MainContainer>
     </div>
   );
 }

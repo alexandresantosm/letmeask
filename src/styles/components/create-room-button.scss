@@ -1,0 +1,24 @@
+.create-room {
+  margin-top: 4rem;
+  height: 3.125rem;
+  border: 0;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  background-color: var(--red-700);
+  color: var(--white-500);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: filter 0.2s;
+  padding: 0 2rem;
+
+  img {
+    margin-right: 0.5rem;
+  }
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}

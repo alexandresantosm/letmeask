@@ -1,0 +1,19 @@
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 20rem;
+  align-items: stretch;
+  text-align: center;
+
+  form {
+    button {
+      margin-top: 1rem;
+    }
+
+    button,
+    input {
+      width: 100%;
+    }
+  }
+}
