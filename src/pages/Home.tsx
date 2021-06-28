@@ -10,11 +10,18 @@ import { MainContent } from "../components/MainContent";
 import { CreateRoomButton } from "../components/CreateRoomButton";
 
 import "../styles/pages/auth.scss";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 export function Home() {
   const history = useHistory();
+  const { user, signInWithGoogle } = useContext(AuthContext);
 
-  function navigateToNewRoom() {
+  async function navigateToNewRoom() {
+    if (!user) {
+      await signInWithGoogle();
+    }
+
     history.push("/rooms/new");
   }
 
@@ -25,7 +32,6 @@ export function Home() {
       <MainContainer>
         <MainContent>
           <Logo />
-
           <CreateRoomButton onClick={navigateToNewRoom} />
 
           <Separator />

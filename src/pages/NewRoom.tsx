@@ -9,8 +9,12 @@ import { MainContent } from "../components/MainContent";
 
 import "../styles/pages/auth.scss";
 import "../styles/components/new-room.scss";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 export function NewRoom() {
+  const { user } = useContext(AuthContext);
+
   return (
     <div id="page-auth">
       <AsideIllustration />
@@ -18,7 +22,7 @@ export function NewRoom() {
       <MainContainer>
         <MainContent>
           <Logo />
-
+          <h1>{user?.name}</h1>
           <h2>Crie uma nova sala</h2>
 
           <form>
