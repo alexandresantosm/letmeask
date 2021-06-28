@@ -7,13 +7,13 @@ import { Logo } from "../components/Logo";
 import { MainContainer } from "../components/MainContainer";
 import { MainContent } from "../components/MainContent";
 
+import { useAuth } from "../hooks/useAuth";
+
 import "../styles/pages/auth.scss";
 import "../styles/components/new-room.scss";
-import { useContext } from "react";
-import { AuthContext } from "../contexts/AuthContext";
 
 export function NewRoom() {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
 
   return (
     <div id="page-auth">

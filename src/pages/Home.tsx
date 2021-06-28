@@ -9,13 +9,13 @@ import { MainContainer } from "../components/MainContainer";
 import { MainContent } from "../components/MainContent";
 import { CreateRoomButton } from "../components/CreateRoomButton";
 
+import { useAuth } from "../hooks/useAuth";
+
 import "../styles/pages/auth.scss";
-import { useContext } from "react";
-import { AuthContext } from "../contexts/AuthContext";
 
 export function Home() {
   const history = useHistory();
-  const { user, signInWithGoogle } = useContext(AuthContext);
+  const { user, signInWithGoogle } = useAuth();
 
   async function navigateToNewRoom() {
     if (!user) {
