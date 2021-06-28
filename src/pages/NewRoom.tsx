@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FormEvent, useState } from "react";
 
 import { AsideIllustration } from "../components/AsideIllustration";
@@ -16,6 +16,7 @@ import { database } from "../services/firebase";
 
 export function NewRoom() {
   const { user } = useAuth();
+  const history = useHistory();
   const [newRoom, setNewRoom] = useState("");
 
   async function handleCreateRoom(event: FormEvent) {
@@ -31,6 +32,10 @@ export function NewRoom() {
       title: newRoom,
       authorId: user?.id,
     });
+
+    const idRoom = firebaseRoom.key;
+
+    history.push(`/rooms/${idRoom}`);
   }
 
   return (
@@ -40,7 +45,7 @@ export function NewRoom() {
       <MainContainer>
         <MainContent>
           <Logo />
-          <h1>{user?.name}</h1>
+
           <h2>Crie uma nova sala</h2>
 
           <form onSubmit={handleCreateRoom}>
