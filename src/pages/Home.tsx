@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 import { Button } from "../components/inputs/Button";
 import { TextInput } from "../components/inputs/TextInput";
@@ -38,7 +39,7 @@ export function Home() {
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if (!roomRef.exists()) {
-      alert("Room does not exists.");
+      toast.error("Room does not exists.");
       return;
     }
 
@@ -65,6 +66,8 @@ export function Home() {
             />
 
             <Button type="submit">Entrar na sala</Button>
+
+            <Toaster />
           </form>
         </MainContent>
       </MainContainer>
