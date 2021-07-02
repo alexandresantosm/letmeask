@@ -13,6 +13,8 @@ import { database } from "../services/firebase";
 import { useRoom } from "../hooks/useRoom";
 
 import "../styles/pages/room.scss";
+import { useState } from "react";
+import { RoomModal } from "../components/RoomModal";
 
 type RoomParams = {
   id: string;
@@ -23,6 +25,16 @@ export function AdminRoom() {
   const roomId = params.id;
 
   const { questions, title } = useRoom(roomId);
+
+  const [isRoomModalOpen, setIsRoomModalOpen] = useState(false);
+
+  function handleOpenRoomModal() {
+    setIsRoomModalOpen(true);
+  }
+
+  function handleCloseRoomModal() {
+    setIsRoomModalOpen(false);
+  }
 
   async function handleCheckQuestionAsAnswered(questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
@@ -37,13 +49,12 @@ export function AdminRoom() {
   }
 
   async function handleDeleteQuestion(questionId: string) {
-    const isConfirmed = window.confirm(
-      "Tem certeza que você deseja excluir esta pergunta?"
-    );
-
-    if (isConfirmed) {
-      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
-    }
+    // const isConfirmed = window.confirm(
+    //   "Tem certeza que você deseja excluir esta pergunta?"
+    // );
+    // if (isConfirmed) {
+    //   await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
+    // }
   }
 
   return (
@@ -53,7 +64,9 @@ export function AdminRoom() {
           <img src={logoImg} alt="Letmeask" />
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined>Encerrar sala</Button>
+            <Button isOutlined onClick={handleOpenRoomModal}>
+              Encerrar sala
+            </Button>
           </div>
         </div>
       </header>
@@ -107,6 +120,12 @@ export function AdminRoom() {
             </Question>
           ))}
         </div>
+
+        <RoomModal
+          roomId={roomId}
+          isOpen={isRoomModalOpen}
+          onRequestClose={handleCloseRoomModal}
+        />
       </main>
     </div>
   );
