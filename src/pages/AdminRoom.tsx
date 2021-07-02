@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import logoImg from "../assets/images/logo.svg";
@@ -86,46 +86,49 @@ export function AdminRoom() {
 
         <div className="question-list">
           {questions.map((question) => (
-            <Question
-              key={question.id}
-              author={question.author}
-              content={question.content}
-              isAnswered={question.isAnswered}
-              isHighlighted={question.isHighlighted}
-            >
-              {!question.isAnswered && (
-                <>
-                  <button
-                    type="button"
-                    aria-label="Marcar pergunta"
-                    onClick={() => handleCheckQuestionAsAnswered(question.id)}
-                  >
-                    <img src={checkImg} alt="Marcar pergunta como respondida" />
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Responder pergunta"
-                    onClick={() => handleHighlightQuestion(question.id)}
-                  >
-                    <img src={answerImg} alt="Dar destaque à pergunta" />
-                  </button>
-                </>
-              )}
-              <button
-                type="button"
-                aria-label="Remover pergunta"
-                onClick={handleOpenQuestionModal}
+            <Fragment key={question.id}>
+              <Question
+                author={question.author}
+                content={question.content}
+                isAnswered={question.isAnswered}
+                isHighlighted={question.isHighlighted}
               >
-                <img src={deleteImg} alt="Remover pergunta" />
-              </button>
-
+                {!question.isAnswered && (
+                  <>
+                    <button
+                      type="button"
+                      aria-label="Marcar pergunta"
+                      onClick={() => handleCheckQuestionAsAnswered(question.id)}
+                    >
+                      <img
+                        src={checkImg}
+                        alt="Marcar pergunta como respondida"
+                      />
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Responder pergunta"
+                      onClick={() => handleHighlightQuestion(question.id)}
+                    >
+                      <img src={answerImg} alt="Dar destaque à pergunta" />
+                    </button>
+                  </>
+                )}
+                <button
+                  type="button"
+                  aria-label="Remover pergunta"
+                  onClick={handleOpenQuestionModal}
+                >
+                  <img src={deleteImg} alt="Remover pergunta" />
+                </button>
+              </Question>
               <QuestionModal
                 roomId={roomId}
                 questionId={question.id}
                 isOpen={isQuestionModalOpen}
                 onRequestClose={handleCloseQuestionModal}
               />
-            </Question>
+            </Fragment>
           ))}
         </div>
 
