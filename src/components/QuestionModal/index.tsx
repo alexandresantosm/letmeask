@@ -30,6 +30,7 @@ export function QuestionModal({
       onRequestClose={onRequestClose}
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
+      ariaHideApp={false}
     >
       <header>
         <svg

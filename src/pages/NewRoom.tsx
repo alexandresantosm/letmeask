@@ -37,7 +37,7 @@ export function NewRoom() {
 
     const idRoom = firebaseRoom.key;
 
-    history.push(`/rooms/${idRoom}`);
+    history.push(`/admin/rooms/${idRoom}`);
   }
 
   return (

@@ -29,6 +29,7 @@ export function RoomModal({ roomId, isOpen, onRequestClose }: RoomModalProps) {
       onRequestClose={onRequestClose}
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
+      ariaHideApp={false}
     >
       <header>
         <img src={closeImg} alt="Encerrar sala" />
