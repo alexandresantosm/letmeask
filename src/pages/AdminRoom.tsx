@@ -13,6 +13,7 @@ import { RoomModal } from "../components/RoomModal";
 import { database } from "../services/firebase";
 
 import { useRoom } from "../hooks/useRoom";
+import { useTheme } from "../hooks/useTheme";
 
 import "../styles/pages/room.scss";
 import { QuestionModal } from "../components/QuestionModal";
@@ -26,6 +27,7 @@ export function AdminRoom() {
   const roomId = params.id;
 
   const { questions, title } = useRoom(roomId);
+  const { theme } = useTheme();
 
   const [isRoomModalOpen, setIsRoomModalOpen] = useState(false);
   const [isQuestionModalOpen, setIsQuestionModalOpen] = useState(false);
@@ -59,7 +61,7 @@ export function AdminRoom() {
   }
 
   return (
-    <div id="page-room">
+    <div id="page-room" className={theme}>
       <header>
         <div className="content">
           <img src={logoImg} alt="Letmeask" />

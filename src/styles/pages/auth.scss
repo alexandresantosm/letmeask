@@ -3,6 +3,16 @@
   align-items: stretch;
   height: 100vh;
 
+  .settings {
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+
+    cursor: pointer;
+  }
+
   @media screen and (max-width: 700px) {
     aside {
       display: none;

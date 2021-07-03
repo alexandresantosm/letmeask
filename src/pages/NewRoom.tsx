@@ -9,6 +9,7 @@ import { MainContainer } from "../components/MainContainer";
 import { MainContent } from "../components/MainContent";
 
 import { useAuth } from "../hooks/useAuth";
+import { useTheme } from "../hooks/useTheme";
 
 import "../styles/pages/auth.scss";
 import "../styles/components/new-room.scss";
@@ -16,6 +17,7 @@ import { database } from "../services/firebase";
 
 export function NewRoom() {
   const { user } = useAuth();
+  const { theme } = useTheme();
   const history = useHistory();
   const [newRoom, setNewRoom] = useState("");
 
@@ -39,7 +41,7 @@ export function NewRoom() {
   }
 
   return (
-    <div id="page-auth">
+    <div id="page-auth" className={theme}>
       <AsideIllustration />
 
       <MainContainer>

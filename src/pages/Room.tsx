@@ -6,12 +6,15 @@ import logoImg from "../assets/images/logo.svg";
 
 import { Button } from "../components/inputs/Button";
 import { RoomCode } from "../components/RoomCode";
-import { useAuth } from "../hooks/useAuth";
+import { Question } from "../components/Question";
+
 import { database } from "../services/firebase";
 
-import "../styles/pages/room.scss";
-import { Question } from "../components/Question";
+import { useAuth } from "../hooks/useAuth";
 import { useRoom } from "../hooks/useRoom";
+import { useTheme } from "../hooks/useTheme";
+
+import "../styles/pages/room.scss";
 
 type RoomParams = {
   id: string;
@@ -20,6 +23,7 @@ type RoomParams = {
 export function Room() {
   const params = useParams<RoomParams>();
   const { user } = useAuth();
+  const { theme } = useTheme();
   const [newQuestion, setNewQuestion] = useState("");
   const roomId = params.id;
 
@@ -67,7 +71,7 @@ export function Room() {
   }
 
   return (
-    <div id="page-room">
+    <div id="page-room" className={theme}>
       <Toaster />
 
       <header>
